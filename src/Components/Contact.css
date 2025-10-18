@@ -8,25 +8,24 @@
     gap: 3rem;
 }
 
-.contact h3, .contact h4, .contact p {
+.contact-title, .contact-subtitle, .contact-data-point {
     color: black;
 }
 
-.contact h3{
+.contact-title{
     font-size: 1.4rem;
     margin-bottom: 0.2rem;
 }
 
-.contact .contact-data-area{
+.contact-data-area{
     width: 60%;
 }
 
-.contact .contact-data-flex-row {
+.contact-data-flex-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    /* gap: 3rem; */
 }
 
 /* .contact .basic-details-block{
