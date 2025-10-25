@@ -122,5 +122,3 @@ For each section, there is an assignment on Brightspace. Provide:
 - A short note (1–2 paragraphs) describing what you implemented and any trade-offs.
 
 A change to track in branch merge
-
-Test of second branch

@@ -1,3 +1,39 @@
+:root {
+  --pop: rgb(255, 255, 255);
+  --input: rgb(255, 255, 255);
+  --inputFocus: rgb(214, 197, 171);
+  --btn: rgb(167, 121, 69);
+  --btnText: white;
+  --btnHover: rgb(211, 165, 113);
+  --line: #c2c2c2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --pop: rgb(172, 106, 21);
+    --input: rgb(214, 197, 171);
+    --btn: rgb(49, 48, 45);
+    --btnText: white;
+    --btnHover: rgb(95, 93, 88);
+    --inputFocus: rgb(201, 166, 110);
+    --line: #c2c2c2;
+
+  }
+
+    input, .image-input-container{
+    box-shadow: 3px 3px 8px rgb(177, 161, 146);
+    border: 1px solid rgb(192, 192, 192) !important;
+  }
+}
+
+
+@font-face {
+    font-family: 'Cute';
+    src: url('/fonts/Cute.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .page {
     max-width: 1100px;
     margin: 0 auto;
@@ -7,18 +43,31 @@
 .page__header {
     display: grid;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     text-align: left;
 }
 
 .page__title {
     margin: 0;
-    font-size: 2rem;
+    font-size: 3rem;
+    font-family: "Cute";
+    letter-spacing: 4px;
 }
+
+h2{
+    font-size: 2.5rem;
+    margin-bottom:0.3rem;
+}
+
+#search-heading{
+    font-size: 1.5rem;
+}
+
 
 .page__subtitle {
     margin: 0;
-    color: #888;
+    color: var(--pop);
+    font-size: 1.3rem;
 }
 
 .toolbar {
@@ -32,8 +81,8 @@
     border-radius: 8px;
     border: 1px solid #3a3a3a;
     padding: 0.5rem 0.9rem;
-    background: #1a1a1a;
-    color: inherit;
+    background: var(--btn);
+    color: var(--btnText);
     cursor: pointer;
 }
 
@@ -47,18 +96,38 @@
 .search {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #333;
+    border-top: 2px solid var(--line);
 }
 
 .search__controls {
-    display: grid;
-    grid-template-columns: minmax(140px, 1fr) 1fr minmax(120px, 1fr) 1fr;
-    gap: 0.5rem 1rem;
-    align-items: center;
+    position: relative;
+    width: 300px;
+    max-width: 90%;
+    height: 40px;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+.search__controls img {
+    height: 60%;
+    top: 40%;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 12px;
+    opacity: 0.6;
+    
+}
+.search__controls:has(#search-input:focus){
+    opacity: 1;
+}
+
+#search-input{
+    width: 100%;
 }
 
 .search__results {
     color: #888;
+    margin-left: 0.4rem;
+
 }
 
 .contacts {
@@ -99,35 +168,150 @@
 } */
 
 .form {
-    margin-top: 2rem;
-    border-top: 1px solid #333;
+    margin-top: 3rem;
     padding-top: 1rem;
 }
 
 .form__body {
+    border-top: 3px solid var(--line);
     display: grid;
-    gap: 0.75rem 1rem;
-    grid-template-columns: 1fr 1fr 160px auto;
-    align-items: end;
+    /* gap: 0.75rem 1rem; */
+    gap: 0px 1.4rem;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(6, 100px);
+
+    grid-template-areas: 
+        "head1 head1 head1 head1 head1 . . . ."
+        "a a a b b b . p p"
+        "c c c d d d . p p"
+        "head2 head2 head2 . . . . . ."
+        "e e e f f f g g h"
+        ". . . i i i . . .";
+    /* grid-template-columns: 1fr 1fr 160px auto; */
+    /* align-items: end; */
+}
+
+.form__actions button{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.form__actions button:hover{
+    background-color: var(--btnHover);
+    transition: background-color 0.3s ease;
+}
+
+#form-heading{
+    margin-bottom: 1rem;
+}
+.form-subheading{
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+#contact-info-header{
+    grid-area: head1;
+}
+#address-info-header{
+    display: block;
+    grid-area: head2;
+}
+
+#pet-name-field{
+    grid-area: a;
+}
+#owner-name-field{
+    grid-area: b;
+}
+#phone-field{
+    grid-area: c;
+}
+#email-field{
+    grid-area: d;
+}
+#street-field{
+    grid-area: e;
+}
+#city-field{
+    grid-area: f;
+}
+#state-field{
+    grid-area: g;
+}
+#zip-field{
+    grid-area: h;
+}
+.image-input-container{
+    grid-area: p;
+    aspect-ratio: 1;
+    height: 152px;
+    padding: 0;
+    margin: 0;
+    top: 25px;
+    position: relative;
+    background-color: var(--input);
+    border: none;
+    border-radius: 0.8rem;
+    transition: background-color 0.3s ease;
+}
+
+.image-input-container:hover{
+    background-color: var(--inputFocus);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.image-input-container input{
+    display: none;
+}
+
+
+#actions{
+    grid-area: i;
 }
 
 .field {
-    display: grid;
+    /* display: grid; */
     gap: 0.25rem;
+}
+
+label{
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--pop);
+    transition: color 0.3s ease;
 }
 
 input,
 select {
     border-radius: 8px;
-    border: 1px solid #3a3a3a;
-    padding: 0.5rem 0.75rem;
-    background: #1a1a1a;
-    color: inherit;
+    /* border: 3px solid #ffffff; */
+    border: none;
+    padding: 1rem 0.75rem;
+    background: var(--input);
+    color: black;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
+
+input:focus, input:hover{
+    outline: none;
+    background: var(--inputFocus);
+    transition: background-color 0.3s ease;
+}
+
+.field:has(input:focus) > label{
+    color: var(--inputFocus);
+} 
 
 .form__actions {
     display: flex;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .page__footer {
@@ -137,10 +321,65 @@ select {
 }
 
 @media (max-width: 720px) {
+    .page__title{
+        font-size: 1.9rem;
+    }
+    .page__subtitle{
+        font-size: 1rem;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    .form-subheading{
+        font-size: 1.5rem;
+    }
     .form__body {
-        grid-template-columns: 1fr;
-    }
-    .search__controls {
-        grid-template-columns: 1fr 1fr;
-    }
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 60px repeat(3, 100px) 60px repeat(3, 100px);
+
+    grid-template-areas: 
+        "head1 head1 head1 head1 head1 head1"
+        "a a a p p p"
+        "b b b p p p"
+        "c c c d d d"
+        "head2 head2 head2 head2 head2 head2"
+        "e e e f f f"
+        "g g g h h h"
+        ". i i i i .";
 }
+
+.image-input-container{
+    justify-self: center;
+    margin-bottom: 30px;
+}
+}
+
+@media (max-width: 500px) {
+    h2{
+        font-size: 1.5rem;
+    }
+    .form__body {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 60px repeat(6, 100px) 50px repeat(4, 100px);
+
+    grid-template-areas: 
+        "head1 head1"
+        "a a"
+        "b b"
+        "c c"
+        "d d"
+        "p p"
+        "p p"
+        "head2 head2"
+        "e e"
+        "f f"
+        "g h"
+        "i i";
+}
+
+.image-input-container{
+    justify-self: center;
+    margin-bottom: 30px;
+}
+}
+
