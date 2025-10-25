@@ -121,4 +121,4 @@ For each section, there is an assignment on Brightspace. Provide:
 - Your final code repository link _directly to the branch for the specific section's work_.
 - A short note (1–2 paragraphs) describing what you implemented and any trade-offs.
 
-A change to track in branch merge
+Section 3 start
