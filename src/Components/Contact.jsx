@@ -4,7 +4,6 @@ const Contact = (props) => {
     const contactData = props.contactData;
     return (
         <article className={"contact"}>
-            <h3 className={"contact-title"}>{contactData.petName}</h3>
             <div className={"pet-image-container"}>
                 <img
                     className={"pet-image"}
@@ -14,21 +13,32 @@ const Contact = (props) => {
             </div>
 
             <div className={"contact-data-area"}>
-                <div className={"details-block"}>
-                    <h4 className={"contact-subtitle"}>Owner Details:</h4>
-                    <p className={"contact-data-point"}>
-                        Name: {contactData.ownerName}
-                    </p>
-                    <p className={"contact-data-point"}>Phone: {contactData.phone}</p>
-                    <p className={"contact-data-point"}>Email: {contactData.email}</p>
-                </div>
-                <div className={"details-block"}>
-                    <h4 className={"contact-subtitle"}>Address:</h4>
-                    <p className={"contact-data-point"}>{contactData.address.street}</p>
-                    <p className={"contact-data-point"}>
-                        {contactData.address.city}, {contactData.address.state}
-                    </p>
-                    <p className={"contact-data-point"}>{contactData.address.zip}</p>
+                <h3 className={"contact-title"}>{contactData.petName}</h3>
+                <div className="data-row">
+                    <div className={"details-block"}>
+                        <h4 className={"contact-subtitle"}>Owner Details:</h4>
+                        <p className={"contact-data-point"}>
+                            Name: {contactData.ownerName}
+                        </p>
+                        <p className={"contact-data-point"}>
+                            Phone: {contactData.phone}
+                        </p>
+                        <p className={"contact-data-point"}>
+                            Email: {contactData.email}
+                        </p>
+                    </div>
+                    <div className={"details-block"} id={"address-detail-block"}>
+                        <h4 className={"contact-subtitle"}>Address:</h4>
+                        <p className={"contact-data-point"}>
+                            {contactData.address.street}
+                        </p>
+                        <p className={"contact-data-point"}>
+                            {contactData.address.city}, {contactData.address.state}
+                        </p>
+                        <p className={"contact-data-point"}>
+                            {contactData.address.zip}
+                        </p>
+                    </div>
                 </div>
             </div>
         </article>
