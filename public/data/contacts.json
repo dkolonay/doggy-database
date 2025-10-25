@@ -1,32 +1,142 @@
 [
     {
-        "id": 101,
-        "name": "Ada Lovelace",
+        "id": 1,
+        "petName": "Axim",
+        "ownerName": "Brittany S.",
         "phone": "(555) 010-0101",
-        "email": "ada@example.com"
+        "email": "brittanys@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/axim.jpg"
     },
     {
-        "id": 102,
-        "name": "Alan Turing",
+        "id": 2,
+        "petName": "Chase",
+        "ownerName": "Steven A.",
         "phone": "(555) 010-0102",
-        "email": "alan@example.com"
+        "email": "stevena@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/chase.jpg"
     },
     {
-        "id": 103,
-        "name": "Grace Hopper",
+        "id": 3,
+        "petName": "Eevee",
+        "ownerName": "Dan K.",
         "phone": "(555) 010-0103",
-        "email": "grace@example.com"
+        "email": "dank@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/eevee.jpg"
     },
     {
-        "id": 104,
-        "name": "Katherine Johnson",
+        "id": 4,
+        "petName": "Gia",
+        "ownerName": "Jennifer F.",
         "phone": "(555) 010-0104",
-        "email": "katherine@example.com"
+        "email": "jenniferf@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/gia.jpg"
     },
     {
-        "id": 105,
-        "name": "Donald Knuth",
+        "id": 5,
+        "petName": "Kissy",
+        "ownerName": "Alex T.",
         "phone": "(555) 010-0105",
-        "email": "donald@example.com"
+        "email": "alext@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/kissy.jpg"
+    },
+    {
+        "id": 6,
+        "petName": "Mac",
+        "ownerName": "Gil G.",
+        "phone": "(555) 010-0106",
+        "email": "gilg@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/mac.jpg"
+    },
+    {
+        "id": 7,
+        "petName": "Mystic",
+        "ownerName": "Alicia M.",
+        "phone": "(555) 010-0107",
+        "email": "aliciam@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/mystic.jpg"
+    },
+    {
+        "id": 8,
+        "petName": "Pablo",
+        "ownerName": "Lilli D.",
+        "phone": "(555) 010-0108",
+        "email": "lillid@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/pablo.jpg"
+    },
+    {
+        "id": 9,
+        "petName": "Pluto",
+        "ownerName": "Doruntina S.",
+        "phone": "(555) 010-0109",
+        "email": "doruntinas@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123 First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/pluto.jpg"
+    },
+    {
+        "id": 10,
+        "petName": "Wall-E",
+        "ownerName": "Jason L.",
+        "phone": "(555) 010-0110",
+        "email": "jasonl@example.com",
+        "address": {
+            "city": "New York",
+            "state": "NY",
+            "street": "123First Avenue",
+            "zip": "12345"
+        },
+        "imgSrc": "/contact-images/wall-e.jpg"
     }
 ]

@@ -1,7 +1,27 @@
 import "./Contact.css";
 
+import aximImage from "../../assets/contact-images/axim.jpg";
+
+const DUMMY_CONTACT = {
+        id: 1,
+        petName: "Axim",
+        ownerName: "Brittany S.",
+        phone: "(555) 010-0101",
+        email: "brittanys@example.com",
+        address: {
+            city: "New York",
+            state: "NY",
+            street: "123 First Avenue",
+            zip: "12345",
+        },
+        imgSrc: aximImage,
+    }
+
 const Contact = (props) => {
-    const contactData = props.contactData;
+    let contactData = DUMMY_CONTACT;
+    if (props.contactData){
+        contactData = props.contactData;
+    }
     return (
         <article className={"contact"}>
             <div className={"pet-image-container"}>

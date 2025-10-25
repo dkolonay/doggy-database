@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'Cute';
+    src: url('/fonts/Cute.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+}
+
+.page__header {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.page__title {
+    margin: 0;
+    font-size: 3rem;
+    font-family: "Cute";
+    letter-spacing: 4px;
+}
+
+.page__subtitle {
+    margin: 0;
+    color: var(--pop);
+    font-size: 1.3rem;
+}
+
+.page__footer {
+    margin-top: 3rem;
+    color: #777;
+    text-align: center;
+}
+
+@media (max-width: 720px) {
+    .page__title{
+        font-size: 1.9rem;
+    }
+    .page__subtitle{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+}
+
+:root {
+  --pop: rgb(255, 255, 255);
+  --line: #c2c2c2;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --pop: rgb(172, 106, 21);
+    --line: #c2c2c2;
+
+  }
+}
