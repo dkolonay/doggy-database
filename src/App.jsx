@@ -1,18 +1,22 @@
-import {RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Home from './pages/Home';
-import Contact from './Components/Contact/Contact';
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const router = createBrowserRouter(
-    [
-        {path: '/', element: <Home/>},
-        {path: '/details', element: <Contact/>}
-    ],
-);
+import Home from "./pages/Home";
+import ContactDetails from "./pages/ContactDetails";
+
+import {ContactContextProvider} from "./ContactContext"
 
 function App() {
-  return (
-    <RouterProvider router={router}/>
-  );
-}
+      return (
+        <ContactContextProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/details/:id" element={<ContactDetails />} />
+            </Routes>
+          </Router>
+        </ContactContextProvider>
+      );
+    }
 
 export default App;

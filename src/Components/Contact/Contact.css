@@ -15,7 +15,7 @@
     background-color: var(--card);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    height: 250px;
+    height: 325px;
     display: flex;
     gap: 1rem;
 
@@ -27,6 +27,9 @@
 
 .contact-data-area{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
 }
 
 .data-row{
@@ -50,12 +53,31 @@
     background-color: rgb(58, 55, 50);
     grid-area: a;
 }
+
+.contact button {
+    /* align-self: center; */
+    width: 60%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0px;
+    background: var(--btn);
+    color: var(--btnText);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background: var(--btnHover);
+    transition: background-color 0.3s ease;
+}
+
 .pet-image{
     width: 100%;
     height: 100%;
 }
 
-@media(max-width:720px){
+@media(max-width:850px){
     #address-detail-block{
         display: none;
     }

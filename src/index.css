@@ -9,6 +9,7 @@
     --image: url("/white-bones.png");
 }
 
+
 @media (prefers-color-scheme: light) {
     :root {
         /* Dark theme colors for media query */

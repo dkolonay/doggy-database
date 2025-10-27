@@ -1,4 +1,7 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { ContactContext } from "../../ContactContext";
 
 import Contact from "../Contact/Contact";
 import "./ContactList.css";
@@ -150,48 +153,38 @@ const ITEMS_PER_PAGE = 4;
 //     },
 // ];
 
-const ContactList = (props) => {
-    const [contacts, setContacts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [pageNumber, setPageNumber] = useState(0);
+const ContactList = () => {
+    const {contacts, error,loading} = useContext(ContactContext)
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    let pageNumber = searchParams.get("page");
+    if (!pageNumber){
+        setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: "0" });
+    }
+    pageNumber = parseInt(pageNumber);
 
     const [query, setQuery] = useState("");
 
     const headerRef = useRef(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch("/data/contacts.json");
-                if (!res.ok) {
-                    throw new Error(`Error: status: ${res.status}`);
-                }
-                const jsonData = await res.json();
-                setContacts(jsonData);
-            } catch (err) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
+    const navigate = useNavigate();
 
     function goToPrevPage() {
         if (pageNumber > 0) {
-            setPageNumber((prevPage) => prevPage - 1);
+            setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: pageNumber - 1 });
             headerRef.current.scrollIntoView();
         }
     }
 
     function goToNextPage() {
-        console.log(pageNumber);
-        if (contacts.length / (pageNumber + 1) > ITEMS_PER_PAGE) {
-            setPageNumber((prevPage) => prevPage + 1);
+        if (Object.keys(contacts).length / (pageNumber + 1) > ITEMS_PER_PAGE) {
+            setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: pageNumber + 1 });
             headerRef.current.scrollIntoView();
         }
+    }
+
+    function navigateToDetailsPage(pageId){
+        navigate(`/details/${pageId}`);
     }
 
     const start = pageNumber * ITEMS_PER_PAGE;
@@ -225,8 +218,8 @@ const ContactList = (props) => {
             </section>
             {!(loading || error) && (
                 <div className={"contacts-list"}>
-                    {contacts.slice(start, end).map((contact) => {
-                        return <Contact key={contact.id} contactData={contact} />;
+                    {Object.entries(contacts).slice(start, end).map((contact) => {
+                        return <Contact key={contact[0]} contactData={contact[1]} nav={navigateToDetailsPage} />;
                     })}
                 </div>
             )}

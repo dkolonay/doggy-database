@@ -1,3 +1,5 @@
+
+
 .btn {
     border-radius: 8px;
     border: 1px solid #3a3a3a;
@@ -15,7 +17,6 @@
 .form__body {
     border-top: 3px solid var(--line);
     display: grid;
-    /* gap: 0.75rem 1rem; */
     gap: 0px 1.4rem;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(6, 100px);
@@ -27,8 +28,6 @@
         "head2 head2 head2 . . . . . ."
         "e e e f f f g g h"
         ". . . i i i . . .";
-    /* grid-template-columns: 1fr 1fr 160px auto; */
-    /* align-items: end; */
 }
 
 .form__actions button{
@@ -47,10 +46,12 @@
 #form-heading{
     margin-bottom: 1rem;
 }
+
 .form-subheading{
     font-size: 2rem;
     margin-top: 1rem;
 }
+
 #contact-info-header{
     grid-area: head1;
 }
@@ -113,7 +114,6 @@
 }
 
 .field {
-    /* display: grid; */
     gap: 0.25rem;
 }
 
@@ -129,7 +129,6 @@ label{
 input,
 select {
     border-radius: 8px;
-    /* border: 3px solid #ffffff; */
     border: none;
     padding: 1rem 0.75rem;
     background: var(--input);

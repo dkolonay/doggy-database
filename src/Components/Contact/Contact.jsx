@@ -1,27 +1,13 @@
 import "./Contact.css";
 
-import aximImage from "../../assets/contact-images/axim.jpg";
-
-const DUMMY_CONTACT = {
-    id: 1,
-    petName: "Axim",
-    ownerName: "Brittany S.",
-    phone: "(555) 010-0101",
-    email: "brittanys@example.com",
-    address: {
-        city: "New York",
-        state: "NY",
-        street: "123 First Avenue",
-        zip: "12345",
-    },
-    imgSrc: aximImage,
-};
-
 const Contact = (props) => {
-    let contactData = DUMMY_CONTACT;
-    if (props.contactData) {
-        contactData = props.contactData;
-    }
+    const contactData = props.contactData;
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        props.nav(contactData.id);
+    };
+
     return (
         <article className={"contact"}>
             <div className={"pet-image-container"}>
@@ -60,6 +46,7 @@ const Contact = (props) => {
                         </p>
                     </div>
                 </div>
+                <button onClick={handleClick}>View Details</button>
             </div>
         </article>
     );
