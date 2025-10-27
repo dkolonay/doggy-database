@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ContactContext } from "../ContactContext";
 
@@ -11,7 +12,13 @@ import "./ContactDetails.css";
 const ContactDetails = () => {
     const { contacts, loading, error } = useContext(ContactContext);
 
+    const navigate = useNavigate();
+
     const params = useParams();
+
+    const goBack = ()=>{
+        navigate(-1);
+    }
 
     let contactData = null;
     if (params.id in contacts) {
@@ -24,6 +31,13 @@ const ContactDetails = () => {
         <main className="page">
             <Header />
             <section className={"details-card"}>
+                <div className={"back-arrow-container"} onClick={goBack}>
+                    <div className="arrow-head">
+                        <div className="arrow-head-part arrow-top"></div>
+                        <div className="arrow-head-part arrow-bottom"></div>
+                    </div>
+                    <div className="arrow-horizontal-bar"></div>
+                </div>
                 <div className={"details-header"}>
                     <img src={contactData.imgSrc} alt={contactData.petName} />
                     <div>
@@ -52,46 +66,6 @@ const ContactDetails = () => {
                     <button>Delete Contact</button>
                 </div>
             </section>
-
-            {/* <article className={"contact"}>
-                <div className={"pet-image-container"}>
-                    <img
-                        className={"pet-image"}
-                        src={contactData.imgSrc}
-                        alt={contactData.petName}
-                    />
-                </div>
-
-                <div className={"contact-data-area"}>
-                    <h3 className={"contact-title"}>{contactData.petName}</h3>
-                    <div className="data-row">
-                        <div className={"details-block"}>
-                            <h4 className={"contact-subtitle"}>Owner Details:</h4>
-                            <p className={"contact-data-point"}>
-                                Name: {contactData.ownerName}
-                            </p>
-                            <p className={"contact-data-point"}>
-                                Phone: {contactData.phone}
-                            </p>
-                            <p className={"contact-data-point"}>
-                                Email: {contactData.email}
-                            </p>
-                        </div>
-                        <div className={"details-block"} id={"address-detail-block"}>
-                            <h4 className={"contact-subtitle"}>Address:</h4>
-                            <p className={"contact-data-point"}>
-                                {contactData.address.street}
-                            </p>
-                            <p className={"contact-data-point"}>
-                                {contactData.address.city}, {contactData.address.state}
-                            </p>
-                            <p className={"contact-data-point"}>
-                                {contactData.address.zip}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </article> */}
             <Footer />
         </main>
     );

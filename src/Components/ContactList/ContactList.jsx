@@ -153,6 +153,9 @@ const ITEMS_PER_PAGE = 4;
 //     },
 // ];
 
+
+
+
 const ContactList = () => {
     const {contacts, error,loading} = useContext(ContactContext)
     const [searchParams, setSearchParams] = useSearchParams();
@@ -208,7 +211,6 @@ const ContactList = () => {
                         data-testid="search-input"
                     />
                 </div>
-
                 <p className="search__results" data-testid="results-count">
                     Showing {contacts.length}{" "}
                     {contacts.length === 1 ? "result" : "results"}

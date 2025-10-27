@@ -23,7 +23,7 @@ export const ContactContextProvider = ({ children }) => {
                 localStorage.setItem("contacts", JSON.stringify(jsonData));
                 setContacts(jsonData);
             } catch (err) {
-                console.log(err)
+                
                 //if contacts cant be fetched, attempt to use most recent local copy
                 if (storedContacts) {
                     const locallyHeldBackup = JSON.parse(storedContacts);
