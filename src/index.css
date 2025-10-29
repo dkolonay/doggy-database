@@ -27,6 +27,11 @@
     box-sizing: border-box;
 }
 
+ul,li{
+    margin: 0;
+    padding: 0;
+}
+
 html,
 body,
 #root {
@@ -60,7 +65,8 @@ h2 {
 
 button,
 input,
-select {
+select,
+textarea {
     font: inherit;
     color: inherit;
 }

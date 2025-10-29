@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from "./pages/Home";
 import ContactDetails from "./pages/ContactDetails";
+import NotFoundPage from './pages/NotFound/NotFound';
 
 import {ContactContextProvider} from "./ContactContext"
 
@@ -13,6 +14,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/details/:id" element={<ContactDetails />} />
+              <Route path="/not-found" element={<NotFoundPage/>}/>
+              <Route path="*" element={<NotFoundPage/>}/>
             </Routes>
           </Router>
         </ContactContextProvider>

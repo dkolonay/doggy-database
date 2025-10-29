@@ -10,6 +10,7 @@ const Form = () => {
         ownerName: "",
         phone: "",
         email: "",
+        description: "",
         address: { city: "", state: "", street: "", zip: "" },
     });
 
@@ -156,6 +157,23 @@ const Form = () => {
                             })
                         }
                     />
+                </div>
+
+                <div className="field" id="description-field">
+                    <label htmlFor="description">Pet Details</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Write some notes/details about this pet..."
+                        value={form.description}
+                        onChange={(e) =>
+                            setForm({
+                                ...form,
+                                description: e.target.value,
+                            })
+                        }
+                    >
+                    </textarea>
                 </div>
 
                 <div className="form__actions" id="actions">

@@ -8,7 +8,7 @@ import "./ContactList.css";
 
 import searchIcon from "../../assets/search.png";
 
-const ITEMS_PER_PAGE = 4;
+const ITEMS_PER_PAGE = 6;
 
 // const FALLBACK_CONTACTS = [
 //     {
@@ -153,15 +153,12 @@ const ITEMS_PER_PAGE = 4;
 //     },
 // ];
 
-
-
-
 const ContactList = () => {
-    const {contacts, error,loading} = useContext(ContactContext)
+    const { contacts, error, loading } = useContext(ContactContext);
     const [searchParams, setSearchParams] = useSearchParams();
 
     let pageNumber = searchParams.get("page");
-    if (!pageNumber){
+    if (!pageNumber) {
         setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: "0" });
     }
     pageNumber = parseInt(pageNumber);
@@ -172,28 +169,37 @@ const ContactList = () => {
 
     const navigate = useNavigate();
 
+    //show the previous page of contacts
     function goToPrevPage() {
         if (pageNumber > 0) {
-            setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: pageNumber - 1 });
+            setSearchParams({
+                ...Object.fromEntries(searchParams.entries()),
+                page: pageNumber - 1,
+            });
             headerRef.current.scrollIntoView();
         }
     }
 
+    //Show the next page of contacts
     function goToNextPage() {
         if (Object.keys(contacts).length / (pageNumber + 1) > ITEMS_PER_PAGE) {
-            setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: pageNumber + 1 });
+            setSearchParams({
+                ...Object.fromEntries(searchParams.entries()),
+                page: pageNumber + 1,
+            });
             headerRef.current.scrollIntoView();
         }
     }
 
-    function navigateToDetailsPage(pageId){
+    //Navigate to details page based on contact id passed as parameter
+    function navigateToDetailsPage(pageId) {
+        localStorage.setItem("returnPage", pageNumber);
         navigate(`/details/${pageId}`);
     }
 
     const start = pageNumber * ITEMS_PER_PAGE;
-    const end = start + ITEMS_PER_PAGE;
+    const end = Math.min(start + ITEMS_PER_PAGE, Object.keys(contacts).length);
 
-    
     return (
         <section className="contacts" aria-labelledby="contacts-heading">
             <h2 id="contacts-heading" ref={headerRef}>
@@ -212,23 +218,48 @@ const ContactList = () => {
                     />
                 </div>
                 <p className="search__results" data-testid="results-count">
-                    Showing {contacts.length}{" "}
-                    {contacts.length === 1 ? "result" : "results"}
+                    Showing {end - start} {contacts.length === 1 ? "result" : "results"}
                     {loading ? " (loading...)" : ""}
                     {error ? ` (error: ${error})` : ""}
                 </p>
             </section>
             {!(loading || error) && (
-                <div className={"contacts-list"}>
-                    {Object.entries(contacts).slice(start, end).map((contact) => {
-                        return <Contact key={contact[0]} contactData={contact[1]} nav={navigateToDetailsPage} />;
-                    })}
-                </div>
+                <ul className={"contacts-list"}>
+                    {Object.entries(contacts)
+                        .slice(start, end)
+                        .map((contact) => {
+                            return (
+                                <Contact
+                                    key={contact[0]}
+                                    contactData={contact[1]}
+                                    nav={navigateToDetailsPage}
+                                />
+                            );
+                        })}
+                </ul>
             )}
 
-            <div>
-                <button  onClick={goToPrevPage} disabled={pageNumber == 0}>prev</button>
-                <button onClick={goToNextPage} disabled={contacts.length / (pageNumber + 1) <= ITEMS_PER_PAGE}>next</button>
+            <div className={"page-select"}>
+                <p>
+                    Showing page {pageNumber + 1} of{" "}
+                    {Math.ceil(Object.keys(contacts).length / ITEMS_PER_PAGE)}
+                </p>
+                <div>
+                    <button
+                        className={"prev-page"}
+                        onClick={goToPrevPage}
+                        disabled={pageNumber == 0}
+                    >
+                        &lt; prev
+                    </button>
+                    <button
+                        classname={"next-page"}
+                        onClick={goToNextPage}
+                        disabled={contacts.length / (pageNumber + 1) <= ITEMS_PER_PAGE}
+                    >
+                        next &gt;
+                    </button>
+                </div>
             </div>
         </section>
     );

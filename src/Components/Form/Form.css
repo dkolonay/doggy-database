@@ -19,12 +19,13 @@
     display: grid;
     gap: 0px 1.4rem;
     grid-template-columns: repeat(9, 1fr);
-    grid-template-rows: repeat(6, 100px);
+    grid-template-rows: repeat(3, 100px) 200px repeat(3, 100px);
 
     grid-template-areas: 
         "head1 head1 head1 head1 head1 . . . ."
         "a a a b b b . p p"
         "c c c d d d . p p"
+        "j j j j j j j j j"
         "head2 head2 head2 . . . . . ."
         "e e e f f f g g h"
         ". . . i i i . . .";
@@ -84,6 +85,13 @@
 #zip-field{
     grid-area: h;
 }
+#description-field{
+    grid-area: j;
+}
+
+#description-field textarea {
+    height: calc(100% - 30px);
+}
 .image-input-container{
     grid-area: p;
     aspect-ratio: 1;
@@ -127,7 +135,8 @@ label{
 }
 
 input,
-select {
+select,
+textarea {
     border-radius: 8px;
     border: none;
     padding: 1rem 0.75rem;
@@ -137,7 +146,7 @@ select {
     transition: background-color 0.3s ease;
 }
 
-input:focus, input:hover{
+input:focus, input:hover, textarea:focus, textarea:hover{
     outline: none;
     background: var(--inputFocus);
     transition: background-color 0.3s ease;
@@ -159,13 +168,14 @@ input:focus, input:hover{
     }
     .form__body {
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 60px repeat(3, 100px) 60px repeat(3, 100px);
+    grid-template-rows: 60px repeat(3, 100px) 200px 60px repeat(3, 100px);
 
     grid-template-areas: 
         "head1 head1 head1 head1 head1 head1"
         "a a a p p p"
         "b b b p p p"
         "c c c d d d"
+        "j j j j j j"
         "head2 head2 head2 head2 head2 head2"
         "e e e f f f"
         "g g g h h h"
@@ -181,7 +191,7 @@ input:focus, input:hover{
 @media (max-width: 500px) {
     .form__body {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 60px repeat(6, 100px) 50px repeat(4, 100px);
+    grid-template-rows: 60px repeat(6, 100px) 200px 50px repeat(4, 100px);
 
     grid-template-areas: 
         "head1 head1"
@@ -191,6 +201,7 @@ input:focus, input:hover{
         "d d"
         "p p"
         "p p"
+        "j j"
         "head2 head2"
         "e e"
         "f f"

@@ -9,7 +9,7 @@ const Contact = (props) => {
     };
 
     return (
-        <article className={"contact"}>
+        <li className={"contact"}>
             <div className={"pet-image-container"}>
                 <img
                     className={"pet-image"}
@@ -48,7 +48,7 @@ const Contact = (props) => {
                 </div>
                 <button onClick={handleClick}>View Details</button>
             </div>
-        </article>
+        </li>
     );
 };
 
