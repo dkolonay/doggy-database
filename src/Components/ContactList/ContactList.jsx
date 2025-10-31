@@ -193,7 +193,6 @@ const ContactList = () => {
 
     //Navigate to details page based on contact id passed as parameter
     function navigateToDetailsPage(pageId) {
-        localStorage.setItem("returnPage", pageNumber);
         navigate(`/details/${pageId}`);
     }
 

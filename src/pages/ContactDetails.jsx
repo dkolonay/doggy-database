@@ -45,7 +45,6 @@ const ContactDetails = () => {
                 if (contactId == id) {
                     if (idx > 0) {
                         prev = contactIds[idx - 1];
-                        console.log(prev);
                     }
                     if (idx < contactIds.length - 1) {
                         next = contactIds[idx + 1];
