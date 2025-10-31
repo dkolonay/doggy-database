@@ -253,9 +253,9 @@ const ContactList = () => {
                         &lt; prev
                     </button>
                     <button
-                        classname={"next-page"}
+                        className={"next-page"}
                         onClick={goToNextPage}
-                        disabled={contacts.length / (pageNumber + 1) <= ITEMS_PER_PAGE}
+                        disabled={Object.keys(contacts).length - (ITEMS_PER_PAGE * pageNumber) <= ITEMS_PER_PAGE}
                     >
                         next &gt;
                     </button>

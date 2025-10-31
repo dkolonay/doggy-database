@@ -1,0 +1,27 @@
+.not-found{
+    text-align: center;
+}
+
+.not-found-links{
+    margin-top: 30px;
+}
+
+.not-found-links a {
+    /* display: block; */
+    padding: 10px 10px;
+    background: rgb(53, 53, 53);
+    margin: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+
+
+}
+
+.not-found-links a:hover {
+background: gray;
+transition: background-color 0.3s ease;
+
+
+}

@@ -24,13 +24,13 @@ const ContactDetails = () => {
 
     const navToPrev = () => {
         if (prevId) {
-            navigate(`/details/${prevId}`, {replace: true});
+            navigate(`/details/${prevId}`, { replace: true });
         }
     };
 
     const navToNext = () => {
         if (nextId) {
-            navigate(`/details/${nextId}`, {replace: true});
+            navigate(`/details/${nextId}`, { replace: true });
         }
     };
 
@@ -65,12 +65,12 @@ const ContactDetails = () => {
     if (loading || error) {
         return <p>{error ? error : loading}</p>;
     }
+
     return (
         <main className="page">
             <Header />
 
             <section className={"details-card"}>
-                
                 <div className="back-container" onClick={goBack}>
                     <div className={"back-arrow-container"}>
                         <div className="arrow-head">
@@ -119,10 +119,16 @@ const ContactDetails = () => {
                     <button className={"delete-contact"}>Delete Contact</button>
                 </div>
                 <nav>
-                    <div className = {`details-prev ${prevId ? "" : "inactive-nav"}`} onClick={navToPrev}>
+                    <div
+                        className={`details-prev ${prevId ? "" : "inactive-nav"}`}
+                        onClick={navToPrev}
+                    >
                         <p>&lt; Prev</p>
                     </div>
-                    <div className={`details-next ${nextId ? "" : "inactive-nav"}`} onClick={navToNext}>
+                    <div
+                        className={`details-next ${nextId ? "" : "inactive-nav"}`}
+                        onClick={navToNext}
+                    >
                         <p>Next &gt;</p>
                     </div>
                 </nav>
