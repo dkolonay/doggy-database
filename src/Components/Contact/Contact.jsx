@@ -15,6 +15,7 @@ const Contact = (props) => {
                     className={"pet-image"}
                     src={contactData.imgSrc}
                     alt={contactData.petName}
+                    key={contactData.id}
                 />
             </div>
 

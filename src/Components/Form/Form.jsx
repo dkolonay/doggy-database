@@ -63,7 +63,7 @@ const Form = () => {
                     <input
                         type="file"
                         id="pet-photo-input"
-                        accept="image/*"
+                        accept=".jpg, .jpeg, .png,"
                         ref={imageInputRef}
                     />
                     <img alt="photo icon" src={photoIcon} />
