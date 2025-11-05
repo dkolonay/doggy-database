@@ -46,6 +46,15 @@
     border-bottom: 1px solid gray;
 }
 
+.query-span{
+    display: inline;
+    background-color: rgb(168, 149, 121);
+}
+
+.detail-span{
+    display: inline;
+}
+
 
 .pet-image-container{
     aspect-ratio: 1;
