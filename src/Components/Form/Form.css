@@ -125,6 +125,34 @@
     gap: 0.25rem;
 }
 
+.field input {
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.input-error{
+    border: 2px solid rgb(145, 29, 29) !important;
+    background-color: rgb(211, 179, 179);
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.field-error{
+    font-size: 10px;
+    text-align: right;
+    margin-top: 4px;
+    color: rgb(145, 29, 29);
+    position: relative;
+    right: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.field-error-hidden{
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 label{
     display: block;
     margin-bottom: 0.5rem;
@@ -181,6 +209,8 @@ input:focus, input:hover, textarea:focus, textarea:hover{
         "g g g h h h"
         ". i i i i .";
 }
+
+
 
 .image-input-container{
     justify-self: center;

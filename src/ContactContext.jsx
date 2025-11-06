@@ -7,10 +7,9 @@ export const ContactContextProvider = ({ children }) => {
     const [contacts, setContacts] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [nextId, setNextId] = useState(0);
 
     useEffect(() => {
-        let storedContacts = localStorage.getItem("contacts");
-
         const fetchData = async () => {
             try {
                 const res = await fetch("/data/contacts.json");
@@ -19,28 +18,42 @@ export const ContactContextProvider = ({ children }) => {
                 }
                 const jsonData = await res.json();
 
-                //update local contacts if successfully fetched
-                localStorage.setItem("contacts", JSON.stringify(jsonData));
                 setContacts(jsonData);
             } catch (err) {
-                
-                //if contacts cant be fetched, attempt to use most recent local copy
-                if (storedContacts) {
-                    const locallyHeldBackup = JSON.parse(storedContacts);
-                    setContacts(locallyHeldBackup);
-                } else {
-                    setError(err);
-                }
+                setError(err);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchData();
+        let storedContacts = localStorage.getItem("contacts");
+
+        if (storedContacts){
+            
+            setContacts(JSON.parse(storedContacts))
+            setLoading(false);
+        } else {
+            fetchData();
+        }
     }, []);
 
+    useEffect(()=>{
+        if (Object.keys(contacts).length != 0){
+            //update next id when contact is added or removed
+            const currentIdStrings = Object.keys(contacts);
+            const currentIds = currentIdStrings.map((idString)=> parseInt(idString));
+            const maxId = Math.max(...currentIds);
+            setNextId(maxId + 1);
+
+
+            //update local storage for persistence 
+            localStorage.setItem("contacts", JSON.stringify(contacts));
+        }
+
+    }, [contacts])
+
     return (
-        <ContactContext.Provider value={{ contacts, setContacts, error, loading }}>
+        <ContactContext.Provider value={{ contacts, setContacts, error, loading, nextId }}>
             {children}
         </ContactContext.Provider>
     );

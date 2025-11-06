@@ -8,9 +8,20 @@ const Contact = (props) => {
         e.preventDefault();
         props.nav(contactData.id);
     };
+    
+    const cleanQueryString = (str) => {
+        str = str.toLowerCase();
+        str = str.replaceAll("-", "");
+        str = str.replaceAll("(", "");
+        str = str.replaceAll(")", "");
+        str = str.trim();
+
+        return str;
+    };
 
     const highlightQuery = (str, type) => {
         const newElement = [];
+        const cleanedQuery = cleanQueryString(query);
         if (str.includes(query)) {
             const strArray = str.split(query);
             console.log(strArray);

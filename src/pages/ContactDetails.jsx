@@ -105,12 +105,7 @@ const ContactDetails = () => {
                 <div>
                     <h3>Pet Description</h3>
                     <p>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Molestiae eum distinctio reiciendis error maxime, voluptate ab
-                        neque impedit dolores sed deleniti. Totam in qui quidem
-                        distinctio quia non quisquam eaque nostrum id provident deserunt
-                        quibusdam aspernatur quod soluta minus, architecto iusto modi
-                        iure numquam enim. Earum ab iusto deleniti delectus.
+                        {contactData.description}
                     </p>
                 </div>
                 <div className={"details-actions"}>

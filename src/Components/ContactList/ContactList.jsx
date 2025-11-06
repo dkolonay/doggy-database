@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, useContext } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ContactContext } from "../../ContactContext";
 
@@ -7,8 +7,6 @@ import Contact from "../Contact/Contact";
 import "./ContactList.css";
 
 import searchIcon from "../../assets/search.png";
-
-const ITEMS_PER_PAGE = 6;
 
 // const FALLBACK_CONTACTS = [
 //     {
@@ -155,42 +153,13 @@ const ITEMS_PER_PAGE = 6;
 
 const ContactList = () => {
     const { contacts, error, loading } = useContext(ContactContext);
-    const [searchParams, setSearchParams] = useSearchParams();
     const [filteredContacts, setFilteredContacts] = useState(contacts);
-
-    let pageNumber = searchParams.get("page");
-    if (!pageNumber) {
-        setSearchParams({ ...Object.fromEntries(searchParams.entries()), page: "0" });
-    }
-    pageNumber = parseInt(pageNumber);
 
     const [query, setQuery] = useState("");
 
     const headerRef = useRef(null);
 
     const navigate = useNavigate();
-
-    //show the previous page of contacts
-    function goToPrevPage() {
-        if (pageNumber > 0) {
-            setSearchParams({
-                ...Object.fromEntries(searchParams.entries()),
-                page: pageNumber - 1,
-            });
-            headerRef.current.scrollIntoView();
-        }
-    }
-
-    //Show the next page of contacts
-    function goToNextPage() {
-        if (Object.keys(contacts).length / (pageNumber + 1) > ITEMS_PER_PAGE) {
-            setSearchParams({
-                ...Object.fromEntries(searchParams.entries()),
-                page: pageNumber + 1,
-            });
-            headerRef.current.scrollIntoView();
-        }
-    }
 
     //Navigate to details page based on contact id passed as parameter
     function navigateToDetailsPage(pageId) {
@@ -203,11 +172,10 @@ const ContactList = () => {
         str = str.replaceAll("-", "");
         str = str.replaceAll("(", "");
         str = str.replaceAll(")", "");
-        str = str.replaceAll(" ", "");
+        str = str.trim();
 
         return str;
     };
-
     //filter based on search query
     useEffect(() => {
         const newFilteredContacts = Object.fromEntries(
@@ -229,9 +197,6 @@ const ContactList = () => {
         setFilteredContacts(newFilteredContacts);
     }, [contacts, query]);
 
-    const start = pageNumber * ITEMS_PER_PAGE;
-    const end = Math.min(start + ITEMS_PER_PAGE, Object.keys(filteredContacts).length);
-
     return (
         <section className="contacts" aria-labelledby="contacts-heading">
             <h2 id="contacts-heading" ref={headerRef}>
@@ -250,15 +215,14 @@ const ContactList = () => {
                     />
                 </div>
                 <p className="search__results" data-testid="results-count">
-                    Showing {end - start} {contacts.length === 1 ? "result" : "results"}
+                    Showing {Object.keys(filteredContacts).length} {Object.keys(filteredContacts).length === 1 ? "result" : "results"}
                     {loading ? " (loading...)" : ""}
                     {error ? ` (error: ${error})` : ""}
                 </p>
             </section>
             {!(loading || error) && (
                 <ul className={"contacts-list"}>
-                    {Object.entries(filteredContacts)
-                        .slice(start, end)
+                    {Object.entries(filteredContacts).reverse()
                         .map((contact) => {
                             return (
                                 <Contact
@@ -271,33 +235,6 @@ const ContactList = () => {
                         })}
                 </ul>
             )}
-
-            <div className={"page-select"}>
-                <p>
-                    Showing page {pageNumber + 1} of{" "}
-                    {Math.ceil(Object.keys(filteredContacts).length / ITEMS_PER_PAGE)}
-                </p>
-                <div>
-                    <button
-                        className={"prev-page"}
-                        onClick={goToPrevPage}
-                        disabled={pageNumber == 0}
-                    >
-                        &lt; prev
-                    </button>
-                    <button
-                        className={"next-page"}
-                        onClick={goToNextPage}
-                        disabled={
-                            Object.keys(filteredContacts).length -
-                                ITEMS_PER_PAGE * pageNumber <=
-                            ITEMS_PER_PAGE
-                        }
-                    >
-                        next &gt;
-                    </button>
-                </div>
-            </div>
         </section>
     );
 };
