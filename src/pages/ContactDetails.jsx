@@ -2,17 +2,22 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { formatPhoneNumber } from "../sharedFunctions";
+
 import { ContactContext } from "../ContactContext";
 
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
+import Form from "../Components/Form/Form";
 
 import "./ContactDetails.css";
 
 const ContactDetails = () => {
-    const { contacts, loading, error } = useContext(ContactContext);
+    const { contacts, loading, error, deleteContact } = useContext(ContactContext);
     const [nextId, setNextId] = useState(null);
     const [prevId, setPrevId] = useState(null);
+
+    const [showForm, setShowForm] = useState(false);
 
     const navigate = useNavigate();
 
@@ -31,6 +36,14 @@ const ContactDetails = () => {
     const navToNext = () => {
         if (nextId) {
             navigate(`/details/${nextId}`, { replace: true });
+        }
+    };
+
+    const handleDelete = () => {
+        const willDelete = window.confirm("Delete this contact?");
+        if (willDelete) {
+            deleteContact(id);
+            navigate("/", {replace:true})
         }
     };
 
@@ -91,7 +104,7 @@ const ContactDetails = () => {
                 <div>
                     <h3>Contact Info</h3>
                     <p>Owner: {contactData.ownerName}</p>
-                    <p>Phone: {contactData.phone}</p>
+                    <p>Phone: {formatPhoneNumber(contactData.phone)}</p>
                     <p>Email: {contactData.email}</p>
                 </div>
                 <div>
@@ -104,13 +117,20 @@ const ContactDetails = () => {
                 </div>
                 <div>
                     <h3>Pet Description</h3>
-                    <p>
-                        {contactData.description}
-                    </p>
+                    <p>{contactData.description}</p>
                 </div>
                 <div className={"details-actions"}>
-                    <button className={"edit-contact"}>Edit Contact</button>
-                    <button className={"delete-contact"}>Delete Contact</button>
+                    <button
+                        className={"edit-contact"}
+                        onClick={() => {
+                            setShowForm(true);
+                        }}
+                    >
+                        Edit Contact
+                    </button>
+                    <button className={"delete-contact"} onClick={handleDelete}>
+                        Delete Contact
+                    </button>
                 </div>
                 <nav>
                     <div
@@ -127,6 +147,12 @@ const ContactDetails = () => {
                     </div>
                 </nav>
             </section>
+            <Form
+                showForm={showForm}
+                setShowForm={setShowForm}
+                data={contactData}
+                edit={true}
+            />
             <Footer />
         </main>
     );

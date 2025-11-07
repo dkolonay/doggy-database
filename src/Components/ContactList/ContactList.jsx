@@ -167,7 +167,7 @@ const ContactList = () => {
     }
 
     //helper function to format query strings
-    const cleanQueryString = (str) => {
+    const cleanString = (str) => {
         str = str.toLowerCase();
         str = str.replaceAll("-", "");
         str = str.replaceAll("(", "");
@@ -176,18 +176,22 @@ const ContactList = () => {
 
         return str;
     };
+
     //filter based on search query
     useEffect(() => {
         const newFilteredContacts = Object.fromEntries(
             Object.entries(contacts).filter(([_, contactData]) => {
                 let match = false;
-                let petName = cleanQueryString(contactData.petName);
-                let ownerName = cleanQueryString(contactData.ownerName);
-                let phone = cleanQueryString(contactData.phone);
+                let petName = cleanString(contactData.petName);
+                let ownerName = cleanString(contactData.ownerName);
+                let phone = cleanString(contactData.phone);
+                let cleanedQuery = cleanString(query);
 
-                let cleanedQuery = cleanQueryString(query);
-
-                if (ownerName.includes(cleanedQuery) ||petName.includes(cleanedQuery) ||phone.includes(cleanedQuery)) {
+                if (
+                    ownerName.includes(cleanedQuery) ||
+                    petName.includes(cleanedQuery) ||
+                    phone.includes(cleanedQuery)
+                ) {
                     match = true;
                 }
                 return match;
@@ -215,14 +219,16 @@ const ContactList = () => {
                     />
                 </div>
                 <p className="search__results" data-testid="results-count">
-                    Showing {Object.keys(filteredContacts).length} {Object.keys(filteredContacts).length === 1 ? "result" : "results"}
+                    Showing {Object.keys(filteredContacts).length}{" "}
+                    {Object.keys(filteredContacts).length === 1 ? "result" : "results"}
                     {loading ? " (loading...)" : ""}
                     {error ? ` (error: ${error})` : ""}
                 </p>
             </section>
             {!(loading || error) && (
                 <ul className={"contacts-list"}>
-                    {Object.entries(filteredContacts).reverse()
+                    {Object.entries(filteredContacts)
+                        .reverse()
                         .map((contact) => {
                             return (
                                 <Contact

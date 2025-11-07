@@ -1,0 +1,83 @@
+.add-button {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    border: none;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(161, 107, 45);
+    box-shadow: 3px 3px 5px rgb(83, 83, 83);
+
+    z-index: 5;
+    transition: background-color 0.3s ease;
+}
+
+.add-button p {
+    position: absolute;
+    bottom: -38px;
+    text-align: center;
+    font-size: 15px;
+    width: 120%;
+        color: rgb(161, 107, 45);
+    text-shadow: 1px 1px 2px rgb(117, 117, 117);
+}
+
+.add-button:hover {
+    cursor: pointer;
+    background-color: rgb(187, 138, 82);
+    transition: background-color 0.3s ease;
+}
+
+.plus {
+    width: 100%;
+    height: 100%;
+}
+
+.plus-bar {
+    width: 60%;
+    height: 6px;
+    position: absolute;
+    left: 20%;
+    top: calc(50% - 3px);
+    background-color: rgb(255, 255, 255);
+    transition: background-color 0.3s ease;
+    border-radius: 3px;
+}
+
+.add-button:hover .plus-bar {
+    transition: background-color 0.3s ease;
+}
+
+.plus-vertical {
+    transform: rotate(90deg);
+}
+
+@media (prefers-color-scheme: dark) {
+    .add-button {
+        background-color: white;
+        box-shadow: 3px 3px 5px rgb(83, 83, 83);
+        z-index: 5;
+    }
+
+    .add-button p {
+        color: white;
+    }
+
+    .add-button:hover {
+        background-color: rgb(206, 206, 206);
+    }
+
+    .plus-bar {
+        background-color: black;
+    }
+
+    .add-button:hover .plus-bar {
+        background-color: rgb(75, 75, 75);
+    }
+}

@@ -46,6 +46,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .contacts {
     margin-top: 1.5rem;
+    min-height: 100vh;
 }
 
 .contacts-list {

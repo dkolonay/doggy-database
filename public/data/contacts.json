@@ -1,9 +1,9 @@
 {
-    "1":{
+    "1": {
         "id": 1,
         "petName": "Axim",
         "ownerName": "Brittany S.",
-        "phone": "(555) 010-0101",
+        "phone": "5550100101",
         "email": "brittanys@example.com",
         "address": {
             "city": "New York",
@@ -12,13 +12,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/axim.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "2":{
+    "2": {
         "id": 2,
         "petName": "Chase",
         "ownerName": "Steven A.",
-        "phone": "(555) 010-0102",
+        "phone": "5550100102",
         "email": "stevena@example.com",
         "address": {
             "city": "New York",
@@ -27,13 +27,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/chase.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "3":{
+    "3": {
         "id": 3,
         "petName": "Eevee",
         "ownerName": "Dan K.",
-        "phone": "(555) 010-0103",
+        "phone": "5550100103",
         "email": "dank@example.com",
         "address": {
             "city": "New York",
@@ -42,13 +42,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/eevee.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "4":{
+    "4": {
         "id": 4,
         "petName": "Gia",
         "ownerName": "Jennifer F.",
-        "phone": "(555) 010-0104",
+        "phone": "5550100104",
         "email": "jenniferf@example.com",
         "address": {
             "city": "New York",
@@ -57,13 +57,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/gia.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "5":{
+    "5": {
         "id": 5,
         "petName": "Kissy",
         "ownerName": "Alex T.",
-        "phone": "(555) 010-0105",
+        "phone": "5550100105",
         "email": "alext@example.com",
         "address": {
             "city": "New York",
@@ -72,13 +72,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/kissy.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "6":{
+    "6": {
         "id": 6,
         "petName": "Mac",
         "ownerName": "Gil G.",
-        "phone": "(555) 010-0106",
+        "phone": "5550100106",
         "email": "gilg@example.com",
         "address": {
             "city": "New York",
@@ -87,13 +87,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/mac.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "7":{
+    "7": {
         "id": 7,
         "petName": "Mystic",
         "ownerName": "Alicia M.",
-        "phone": "(555) 010-0107",
+        "phone": "5550100107",
         "email": "aliciam@example.com",
         "address": {
             "city": "New York",
@@ -102,13 +102,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/mystic.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "8":{
+    "8": {
         "id": 8,
         "petName": "Pablo",
         "ownerName": "Lilli D.",
-        "phone": "(555) 010-0108",
+        "phone": "5550100108",
         "email": "lillid@example.com",
         "address": {
             "city": "New York",
@@ -117,13 +117,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/pablo.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "9":{
+    "9": {
         "id": 9,
         "petName": "Pluto",
         "ownerName": "Doruntina S.",
-        "phone": "(555) 010-0109",
+        "phone": "5550100109",
         "email": "doruntinas@example.com",
         "address": {
             "city": "New York",
@@ -132,13 +132,13 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/pluto.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     },
-    "10":{
+    "10": {
         "id": 10,
         "petName": "Wall-E",
         "ownerName": "Jason L.",
-        "phone": "(555) 010-0110",
+        "phone": "5550100110",
         "email": "jasonl@example.com",
         "address": {
             "city": "New York",
@@ -147,6 +147,6 @@
             "zip": "12345"
         },
         "imgSrc": "/contact-images/wall-e.jpg",
-        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis!"
+        "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, distinctio porro quo dolorum voluptas facilis tempore quos. Dicta dolores quia nihil incidunt provident amet cumque, aut fugiat vel cum voluptatum iusto quis est! Recusandae molestiae explicabo qui quae nihil quis"
     }
 }

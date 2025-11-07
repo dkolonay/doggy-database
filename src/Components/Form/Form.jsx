@@ -6,24 +6,26 @@ import "./Form.css";
 import photoIcon from "../../assets/photo.png";
 
 const DEFAULT_FORM_STATE = {
-        petName: "",
-        ownerName: "",
-        phone: "",
-        email: "",
-        description: "",
-        address: { city: "", state: "", street: "", zip: "" },
-        imgSrc: "/contact-images/axim.jpg",
-    }
+    petName: "",
+    ownerName: "",
+    phone: "",
+    email: "",
+    description: "",
+    address: { city: "", state: "", street: "", zip: "" },
+    imgSrc: "/contact-images/axim.jpg",
+};
 
-const Form = () => {
-    const { setContacts, nextId } = useContext(ContactContext);
+const Form = ({ showForm, setShowForm, data, edit }) => {
+    const { addContact, editContact } = useContext(ContactContext);
 
-    const [form, setForm] = useState(DEFAULT_FORM_STATE);
+    const [form, setForm] = useState(edit ? data : DEFAULT_FORM_STATE);
 
-    const [ownerNameValid, setOwnerNameValid] = useState(null);
-    const [petNameValid, setPetNameValid] = useState(null);
-    const [phoneValid, setPhoneValid] = useState(null);
-    const [emailValid, setEmailValid] = useState(null);
+    const [ownerNameValid, setOwnerNameValid] = useState(edit ? true : null);
+    const [petNameValid, setPetNameValid] = useState(edit ? true : null);
+    const [phoneValid, setPhoneValid] = useState(edit ? true : null);
+    const [emailValid, setEmailValid] = useState(edit ? true : null);
+
+    const [imageData, setImageData] = useState(edit ? data.imgSrc : "");
 
     const imageInputRef = useRef(null);
 
@@ -50,21 +52,50 @@ const Form = () => {
         }
 
         if (formValid) {
-            setContacts((prevContacts) => {
-                const newContacts = structuredClone(prevContacts);
-                const newContact = structuredClone(form);
-                newContact.id = nextId;
-                newContacts[nextId] = newContact;
+            const newContact = structuredClone(form)
+            newContact.phone = cleanPhoneNumber(newContact.phone)
+            if (edit) {
+                editContact(newContact);
+            } else {
+                addContact(newContact);
+            }
 
-                return newContacts;
-            });
-            setForm(DEFAULT_FORM_STATE);
-            setOwnerNameValid(null);
-            setPetNameValid(null);
-            setPhoneValid(null);
-            setEmailValid(null);
+            handleCloseForm(true);
         }
     }
+
+    const resetForm = () => {
+        setForm(edit ? data : DEFAULT_FORM_STATE);
+        setImageData(edit ? data.imgSrc : "");
+        setOwnerNameValid(edit ? true : null);
+        setPetNameValid(edit ? true : null);
+        setPhoneValid(edit ? true : null);
+        setEmailValid(edit ? true : null);
+    };
+
+    const handleCloseForm = (wasSubmitted) => {
+        setShowForm(false);
+        if (!wasSubmitted || !edit) {
+            resetForm();
+        }
+    };
+
+    const handleImagePreview = (e) => {
+        const file = e.target.files[0];
+        const src = URL.createObjectURL(file);
+        console.log(src);
+        setImageData(src);
+    };
+
+    const cleanPhoneNumber = (phoneNumber) => {
+        phoneNumber = phoneNumber
+            .replaceAll("-", "")
+            .replaceAll("(", "")
+            .replaceAll(")", "")
+            .replaceAll(" ", "");
+
+        return phoneNumber;
+    };
 
     function validateField(e) {
         switch (e.target.id) {
@@ -75,11 +106,9 @@ const Form = () => {
                 setOwnerNameValid(e.target.value.length >= 2);
                 break;
             case "phone":
-                let cleanPhoneNumber = e.target.value.replaceAll("-", "");
-                cleanPhoneNumber = cleanPhoneNumber.replaceAll("(", "");
-                cleanPhoneNumber = cleanPhoneNumber.replaceAll("}", "");
+                let cleanedPhoneNumber = cleanPhoneNumber(e.target.value);
 
-                setPhoneValid(cleanPhoneNumber.length >= 10);
+                setPhoneValid(cleanedPhoneNumber.length === 10);
                 break;
             case "email":
                 setEmailValid(
@@ -93,14 +122,20 @@ const Form = () => {
 
     function clickImageInput(e) {
         e.preventDefault();
+        console.log(imageInputRef.current);
         if (imageInputRef.current) {
             imageInputRef.current.click();
         }
     }
 
     return (
-        <section className="form" aria-labelledby="form-heading">
-            <h2 id="form-heading">Add a New Furry Friend!</h2>
+        <section
+            className={`form ${showForm ? "" : "hide-form"}`}
+            aria-labelledby="form-heading"
+        >
+            <h2 id="form-heading">
+                {edit ? `Edit ${data.petName}` : "Add a New Furry Friend!"}
+            </h2>
             <form className="form__body" onSubmit={handleSubmit} noValidate>
                 <p className="form-subheading" id="contact-info-header">
                     Contact Info
@@ -143,12 +178,24 @@ const Form = () => {
                         Provide a valid owner name.
                     </p>
                 </div>
-                <button className="image-input-container" onMouseUp={clickImageInput}>
+                <button
+                    className="image-input-container"
+                    type="button"
+                    onMouseUp={clickImageInput}
+                >
+                    {imageData && (
+                        <img
+                            className={"image-preview"}
+                            src={imageData}
+                            alt="image-preview"
+                        />
+                    )}
                     <input
                         type="file"
                         id="pet-photo-input"
                         accept=".jpg, .jpeg, .png,"
                         ref={imageInputRef}
+                        onChange={handleImagePreview}
                     />
                     <img alt="photo icon" src={photoIcon} />
                 </button>
@@ -168,7 +215,7 @@ const Form = () => {
                     <p
                         className={`field-error ${phoneValid === false ? "" : "field-error-hidden"}`}
                     >
-                        Provide a valid phone number.
+                        Phone number must be 10 digits.
                     </p>
                 </div>
 
@@ -275,7 +322,16 @@ const Form = () => {
 
                 <div className="form__actions" id="actions">
                     <button className="btn" type="submit" data-testid="btn-add">
-                        Submit New Contact
+                        Submit
+                    </button>
+                    <button
+                        className="btn cancel-btn"
+                        type="button"
+                        onClick={() => {
+                            handleCloseForm(false);
+                        }}
+                    >
+                        Cancel
                     </button>
                 </div>
             </form>
