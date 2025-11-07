@@ -134,7 +134,7 @@ const Form = ({ showForm, setShowForm, data, edit }) => {
             aria-labelledby="form-heading"
         >
             <h2 id="form-heading">
-                {edit ? `Edit ${data.petName}` : "Add a New Furry Friend!"}
+                {edit ? `Edit "${data.petName}"` : "Add a New Furry Friend!"}
             </h2>
             <form className="form__body" onSubmit={handleSubmit} noValidate>
                 <p className="form-subheading" id="contact-info-header">

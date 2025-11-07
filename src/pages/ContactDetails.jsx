@@ -77,11 +77,10 @@ const ContactDetails = () => {
     if (loading || error) {
         return <p>{error ? error : loading}</p>;
     }
-
+    if (!contactData) return null;
     return (
         <main className="page">
             <Header />
-
             <section className={"details-card"}>
                 <div className="back-container" onClick={goBack}>
                     <div className={"back-arrow-container"}>

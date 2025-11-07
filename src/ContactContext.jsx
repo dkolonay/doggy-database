@@ -36,24 +36,42 @@ export const ContactContextProvider = ({ children }) => {
         }
     }, []);
 
+    const calculateNextId = (newContacts) => {
+        if (Object.keys(newContacts).length === 0) {
+            setNextId(0);
+        } else {
+            const currentIdStrings = Object.keys(newContacts);
+            const currentIds = currentIdStrings.map((idString) => parseInt(idString));
+            const maxId = Math.max(...currentIds);
+
+            setNextId(maxId + 1);
+        }
+    };
+
     const addContact = (newData) => {
         setContacts((prevContacts) => {
             const newContacts = structuredClone(prevContacts);
             const newContact = structuredClone(newData);
-            
-            newContact.id = nextId
+
+            newContact.id = nextId;
             newContacts[nextId] = newContact;
+
+            localStorage.setItem("contacts", JSON.stringify(newContacts));
+            calculateNextId(newContacts);
 
             return newContacts;
         });
     };
 
     const editContact = (editedData) => {
-         setContacts((prevContacts) => {
+        setContacts((prevContacts) => {
             const newContacts = structuredClone(prevContacts);
             const newContact = structuredClone(editedData);
-            
+
             newContacts[editedData.id] = newContact;
+
+            localStorage.setItem("contacts", JSON.stringify(newContacts));
+            calculateNextId(newContacts);
 
             return newContacts;
         });
@@ -64,25 +82,21 @@ export const ContactContextProvider = ({ children }) => {
             setContacts((prevContacts) => {
                 const newContacts = structuredClone(prevContacts);
                 delete newContacts[id];
+
+                if (Object.keys(newContacts).length === 0) {
+                    localStorage.removeItem("contacts");
+                } else {
+                    localStorage.setItem("contacts", JSON.stringify(newContacts));
+                }
+
+                calculateNextId(newContacts);
+
                 return newContacts;
             });
         } else {
             throw new Error("contact does not exist");
         }
     };
-
-    useEffect(() => {
-        if (Object.keys(contacts).length != 0) {
-            //update next id when contact is added or removed
-            const currentIdStrings = Object.keys(contacts);
-            const currentIds = currentIdStrings.map((idString) => parseInt(idString));
-            const maxId = Math.max(...currentIds);
-            setNextId(maxId + 1);
-
-            //update local storage for persistence
-            localStorage.setItem("contacts", JSON.stringify(contacts));
-        }
-    }, [contacts]);
 
     return (
         <ContactContext.Provider
